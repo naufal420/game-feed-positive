@@ -7,7 +7,9 @@ const gameWrapper = document.getElementById("gameWrapper");
 const restartBtn = document.getElementById("restartBtn");
 
 // ================= AUDIO =================
-const bgMusic = new Audio("sounds/bg.mp3");
+const bgMusic = new Audio(
+  "sounds/victory-awaits-in-the-gaming-universe_astronaut-265184.mp3"
+);
 bgMusic.loop = true;
 bgMusic.volume = 0.4;
 
@@ -26,7 +28,7 @@ let spawnInterval = 60;
 
 // ================= PLAYER =================
 const player = {
-  x: 260,
+  x: 360,
   y: 360,
   width: 80,
   height: 20,
@@ -185,10 +187,21 @@ function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   if (gameOver) {
-    ctx.font = "36px Arial";
-    ctx.fillText("GAME OVER", 180, 180);
-    ctx.font = "18px Arial";
-    ctx.fillText("Tetap jaga pikiran positif 💙", 150, 220);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#333";
+    ctx.textAlign = "center";
+
+    ctx.font = "42px Arial";
+    ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 20);
+
+    ctx.font = "20px Arial";
+    ctx.fillText(
+      "Tetap jaga pikiran positif 💙",
+      canvas.width / 2,
+      canvas.height / 2 + 20
+    );
+
     restartBtn.style.display = "block";
     return;
   }
